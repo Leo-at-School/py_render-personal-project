@@ -1,4 +1,5 @@
 """
+Notes:
 - Variables in ALL CAPS are from a settings file or are a pygame constant
 """
 #Standard libraries
