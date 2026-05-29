@@ -1,50 +1,12 @@
-#Currently working on this file. I haven't ran it yet, so... idk if it works
-#I'm still working on things too, so I havent even finished coding what I want to code
-
 import timeit
 import random
 import math
 
-#Multiply two matrices. For matrices with larger dimensions
-def large_matrix_multiply(matrix_a: list[list[float]], matrix_b: list[list[float]]) -> list[list[float]]:
-    #Transpose matrix_b so matrix_b_transposed's rows (matrix_b's columns) can be zipped with matrix_a's rows
-    matrix_b_transposed: list[list[float]] = transpose(matrix_b)
-    new_matrix: list[list[float]] = []
-    
-    #Loop through rows of matrix_a
-    for new_row in matrix_a:
-        new_matrix_row: list[float] = []
-        
-        #Create new_matrix's row. Loop through rows of matrix_b_transposed (columns of matrix_b)
-        for new_column in matrix_b_transposed:
-            new_value: float = 0
-            
-            #Compute each value of the row
-            for matrix_a_value, matrix_b_value in zip(new_row, new_column):
-                new_value += matrix_a_value * matrix_b_value
-            
-            new_matrix_row.append(new_value)
-        
-        new_matrix.append(new_matrix_row)
-    
-    return new_matrix
-    
-#Multiply two matrices. For matrices with smaller dimensions
-def small_matrix_multiply(matrix_a: list[list[float]], matrix_b: list[list[float]]) -> list[list[float]]:
-    #Initialize empty matrix
-    new_matrix: list[list[float]] = [[0 for _ in range(len(matrix_b[0]))] for _ in range(len(matrix_a))]
-    
-    #Multiply
-    for i in range(len(matrix_a)):
-        for j in range(len(matrix_b[0])):
-            for k in range(len(matrix_b)):
-                new_matrix[i][j] += matrix_a[i][k]*matrix_b[k][j]
-                
-    return new_matrix
+def function_1():
+    pass
 
-#Transpose a matrix
-def transpose(matrix: tuple[tuple[float]]) -> tuple[tuple[float]]:
-    return tuple(tuple(matrix[y][x] for y in range(len(matrix))) for x in range(len(matrix[0])))
+def function_2():
+    pass
 
 #Plus anymore functions :)
 #====================================================================================================#
@@ -77,25 +39,10 @@ def benchmark_functions(functions: list[list["function reference", "any paramete
 #====================================================================================================#
 
 if __name__ == "__main__":
-    length_1: int = random.randint(1, 30)
-    length_2: int = random.randint(1, 30)
-    random_matrix_a = [[random.randint(1, 9) for col in range(length_2)] for row in range(length_1)]
-    random_matrix_b = [[random.randint(1, 9) for col in range(length_1)] for row in range(length_2)]
-    
-    for row in random_matrix_a:
-        print(row)
-    
-    print()
-    
-    for row in random_matrix_b:
-        print(row)
-    
-    print()
-    
     #Edit stuff here
     functions: list[list["function reference", "parameters"]] = [
-        [large_matrix_multiply, random_matrix_a, random_matrix_b],
-        [small_matrix_multiply, random_matrix_a, random_matrix_b]
+        [function_1, None],
+        [function_2, None]
     ]
     
     average_runtimes: list[float]; equality: bool
