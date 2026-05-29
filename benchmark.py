@@ -41,8 +41,8 @@ def benchmark_functions(functions: list[list["function reference", "any paramete
 if __name__ == "__main__":
     #Edit stuff here
     functions: list[list["function reference", "parameters"]] = [
-        [function_1, None],
-        [function_2, None]
+        [function_1, ],
+        [function_2, ]
     ]
     
     average_runtimes: list[float]; equality: bool
