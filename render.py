@@ -95,13 +95,13 @@ Process:
 """
 def vertex_to_display(vertices: tuple[tuple[float]]) -> tuple[tuple[int]]:
     camera_x: float; camera_y: float; camera_z: float
-    camera_x,        camera_y,        camera_z       = global_objects.player_data.camera_xyz
+    camera_x, camera_y, camera_z = global_objects.player_data.camera_xyz
     
     screen_x: float; screen_y: float; screen_z: float
-    screen_x,        screen_y,        screen_z       = global_objects.player_data.screen_xyz
+    screen_x, screen_y, screen_z = global_objects.player_data.screen_xyz
     
     screen_normal_a: float; screen_normal_b: float; screen_normal_c: float; screen_normal: float
-    screen_normal_a,        screen_normal_b,        screen_normal_c       = screen_normal = global_objects.player_data.screen_normal
+    screen_normal_a, screen_normal_b, screen_normal_c = screen_normal = global_objects.player_data.screen_normal
     
     screen_x_axis: tuple[int] = global_objects.player_data.screen_x_axis
     
@@ -173,7 +173,7 @@ def frustum_cull(point: tuple) -> bool:
 #Draws pixel to the screen (origin centered in screen)
 def draw_pixel(point: tuple[int], rgb: tuple[int]) -> None:
     x: int; y: int
-    x,      y     = point
+    x, y = point
 
     #y is offset by 1 because y = 0 is off-screen, origin is centered
     pixel: object = pg.Rect((x*DISPLAY_SCALE + DISPLAY_WIDTH/2, DISPLAY_HEIGHT/2 - (y + 1)*DISPLAY_SCALE, DISPLAY_SCALE, DISPLAY_SCALE))
@@ -183,8 +183,8 @@ def draw_pixel(point: tuple[int], rgb: tuple[int]) -> None:
 def draw_line(point_1: tuple[float], point_2: tuple[float], rgb: tuple[int]) -> None:
     x1: float; y1: float
     x1: float; y1: float
-    x1       , y1       = point_1
-    x2       , y2       = point_2
+    x1 , y1 = point_1
+    x2 , y2 = point_2
     
     #Singular point
     if x1 == x2 and y1 == y2:

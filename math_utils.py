@@ -25,7 +25,7 @@ def new_round(num: float) -> int:
 
 #Transpose a matrix
 def transpose(matrix: tuple[tuple[float]]) -> tuple[tuple[float]]:
-    return ((matrix[y][x] for y in range(len(matrix))) for x in range(len(matrix[0])))
+    return tuple(tuple(matrix[y][x] for y in range(len(matrix))) for x in range(len(matrix[0])))
 
 #Multiply two matrices. For matrices with larger dimensions
 def large_matrix_multiply(matrix_a: list[list[float]], matrix_b: list[list[float]]) -> list[list[float]]:
