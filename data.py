@@ -91,18 +91,17 @@ class Player_Data:
 """
 Holds:
 - Mesh groups
-- A mesh's vertices
-- Rules on how to connect the vertices
+- A mesh's vertices and triangles
 
 Notes:
-- Static methods should not have any changes made to them
-mesh_group structure:
+- Static meshes should not have any changes made to them
+- mesh_group structure:
     [                
-        (rgb_1, (vertex_a1, vertex_a2, ...), (line_a1, line_a2, ...)), #Mesh 1
-        (rgb_2, (vertex_b1, vertex_b2, ...), (line_b1, line_b2, ...)), #Mesh 2
+        (rgb_1, (vertex_a1, vertex_a2, ...), (triangle_a1, triangle_a2, ...)), #Mesh 1
+        (rgb_2, (vertex_b1, vertex_b2, ...), (triangle_b1, triangle_b2, ...)), #Mesh 2
         ...
     ]
-- The tuple with elements labled as lines dictates how to connect 2 vertices (Eg. (0, 5) connects the vertices at index 0 and 5)
+- triangle_a1, etc refers to the list of vertices that dictate the triangles in the mesh (every group of 3 adjacent triangle vertices makes a triangle)
 """
 class Static_Meshes:
     pass
@@ -110,18 +109,17 @@ class Static_Meshes:
 """
 Holds:
 - Mesh groups
-- A mesh's vertices
-- Rules on how to connect the vertices
+- A mesh's vertices and triangles
 
 Notes:
-- Dynamic methods are allowed to have changes made to them
-mesh_group structure:
+- Dynamic meshes are allowed to have changes made to them
+- mesh_group structure:
     [                
-        (rgb_1, (vertex_a1, vertex_a2, ...), (line_a1, line_a2, ...)), #Mesh 1
-        (rgb_2, (vertex_b1, vertex_b2, ...), (line_b1, line_b2, ...)), #Mesh 2
+        (rgb_1, (vertex_a1, vertex_a2, ...), (triangle_a1, triangle_a2, ...)), #Mesh 1
+        (rgb_2, (vertex_b1, vertex_b2, ...), (triangle_b1, triangle_b2, ...)), #Mesh 2
         ...
     ]
-- The tuple with elements labled as lines dictates how to connect 2 vertices (Eg. (0, 5) connects the vertices at index 0 and 5)
+- triangle_a1, etc refers to the list of vertices that dictate the triangles in the mesh (every group of 3 adjacent triangle vertices makes a triangle)
 """
 class Dynamic_Meshes:
     pass

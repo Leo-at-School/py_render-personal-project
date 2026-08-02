@@ -20,11 +20,11 @@ import math_utils
 #Draws the vertices of a mesh
 def draw_meshes(mesh_group: list[tuple[tuple[float]]]) -> None:
     for mesh in mesh_group:
-        mesh_color: tuple[int] = mesh[0]
-        mesh_vertices: tuple[tuple[float]] = mesh[1]
-        mesh_lines: tuple[tuple[int]] = mesh[2]
+        color: tuple[int] = mesh[0]
+        vertices: tuple[tuple[float]] = mesh[1]
+        triangles: tuple[int] = mesh[2]
         
-        screen_mesh: list[tuple[float]] = vertex_to_display(mesh_vertices)
+        screen_mesh: list[tuple[float]] = vertex_to_display(vertices)
         
         """
         screen_mesh = [
@@ -34,13 +34,18 @@ def draw_meshes(mesh_group: list[tuple[tuple[float]]]) -> None:
         ]
         """
         
+        #Draw vertices
         for x, y, toggle in screen_mesh:
             
             if toggle:
-                draw_pixel((x, y), mesh_color)
+                draw_pixel((x, y), color)
         
+        """
         #Crude lines
-        for index_1, index_2 in mesh_lines:
+        for triangle_vertex_index in range(len(triangles) - 1):
+            index_1: int = triangles[triangle_vertex_index]
+            index_2: int = triangles[triangle_vertex_index + 1]
+            
             point_data_1: tuple[int, bool] = screen_mesh[index_1]
             point_data_2: tuple[int, bool] = screen_mesh[index_2]
             
@@ -50,8 +55,31 @@ def draw_meshes(mesh_group: list[tuple[tuple[float]]]) -> None:
             toggle_2: bool = point_data_2[TOGGLE]
             
             if toggle_1 and toggle_2:
-                draw_line(point_1, point_2, mesh_color)
+                draw_line(point_1, point_2, color)
+        """
         
+        #Draw triangle mesh
+        for i in range(len(triangles) - 2):
+            index_1: int = triangles[i]
+            index_2: int = triangles[i + 1]
+            index_3: int = triangles[i + 2]
+            
+            point_data_1: tuple[int, bool] = screen_mesh[index_1]
+            point_data_2: tuple[int, bool] = screen_mesh[index_2]
+            point_data_3: tuple[int, bool] = screen_mesh[index_3]
+            
+            point_1: tuple[int] = (point_data_1[X], point_data_1[Y])
+            point_2: tuple[int] = (point_data_2[X], point_data_2[Y])
+            point_3: tuple[int] = (point_data_3[X], point_data_3[Y])
+            toggle_1: bool = point_data_1[TOGGLE]
+            toggle_2: bool = point_data_2[TOGGLE]
+            toggle_3: bool = point_data_3[TOGGLE]
+            
+            if toggle_1 and toggle_2:
+                draw_line(point_1, point_2, color)
+            if toggle_1 and toggle_3:
+                draw_line(point_1, point_3, color)
+            
 
 """
 Notes:
